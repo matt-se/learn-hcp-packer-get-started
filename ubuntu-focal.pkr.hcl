@@ -50,9 +50,9 @@ source "amazon-ebs" "basic-example-west" {
 
 build {
   hcp_packer_registry {
-    bucket_name = "learn-packer-ubuntu"
+    bucket_name = "basic-ubuntu-image"
     description = <<EOT
-Some nice description about the image being published to HCP Packer Registry.
+To be used for good, not evil.
     EOT
     bucket_labels = {
       "owner"          = "platform-team"
@@ -69,4 +69,7 @@ Some nice description about the image being published to HCP Packer Registry.
     "source.amazon-ebs.basic-example-east",
     "source.amazon-ebs.basic-example-west"
   ]
+  provisioner "shell" {
+    inline = ["echo doing stuff"]
+  }
 }
